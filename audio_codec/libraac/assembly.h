@@ -68,7 +68,9 @@ static __inline__ int MULSHIFT32(int x, int y)
 static __inline__ int MULSHIFT32(int x, int y)
 {
     int zlow;
+#if defined(__arm__)
     __asm__ volatile ("smull %0,%1,%2,%3" : "=&r" (zlow), "=r" (y) : "r" (x), "1" (y) : "cc");
+#endif
     return y;
 }
 #endif
@@ -133,9 +135,9 @@ static __inline__ Word64 MADD64(Word64 sum64, int x, int y)
 {
 	U64 u;
 	u.w64 = sum64;
-
+#if defined(__arm__)
 	__asm__ volatile ("smlal %0,%1,%2,%3" : "+&r" (u.r.lo32), "+&r" (u.r.hi32) : "r" (x), "r" (y) : "cc");
-
+#endif
 	return u.w64;
 }
 #endif

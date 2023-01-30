@@ -7,7 +7,7 @@ SRC_FILES		=  $(wildcard $(SRC_PATH)*.c)
 EXPORT_INCLUDE_FILES	= $(wildcard $(SRC_PATH)*.h)  $(SRC_PATH)/../../amadec/include $(SRC_PATH)/../../amadec/
 
 USING_LIBS		=
-USING_INCLUDES_PATH	=
+USING_INCLUDES_PATH	= -I$(SRC_PATH)/../../amadec/include -I$(SRC_PATH)/../../amadec
 
 USING_LIBS_PATH		=
 DEBUG  		= YES

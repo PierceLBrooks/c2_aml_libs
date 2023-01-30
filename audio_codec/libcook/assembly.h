@@ -70,7 +70,9 @@ static __inline__ int MULSHIFT32(int x, int y)
 static __inline__ int MULSHIFT32(int x, int y)
 {
     int zlow;
+#if defined(__arm__)
     __asm__ volatile ("smull %0,%1,%2,%3" : "=&r" (zlow), "=r" (y) : "r" (x), "1" (y));
+#endif
     return y;
 }
 #endif
